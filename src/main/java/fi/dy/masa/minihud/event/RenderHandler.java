@@ -11,6 +11,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+
+import net.minecraft.client.gui.DrawContext;
 import org.joml.Matrix4f;
 import net.minecraft.block.BeehiveBlock;
 import net.minecraft.block.BlockState;
@@ -111,7 +113,7 @@ public class RenderHandler implements IRenderer
     }
 
     @Override
-    public void onRenderGameOverlayPost(MatrixStack matrixStack)
+    public void onRenderGameOverlayPost(DrawContext context)
     {
         if (Configs.Generic.MAIN_RENDERING_TOGGLE.getBooleanValue() == false)
         {
@@ -142,12 +144,12 @@ public class RenderHandler implements IRenderer
             boolean useBackground = Configs.Generic.USE_TEXT_BACKGROUND.getBooleanValue();
             boolean useShadow = Configs.Generic.USE_FONT_SHADOW.getBooleanValue();
 
-            RenderUtils.renderText(x, y, Configs.Generic.FONT_SCALE.getDoubleValue(), textColor, bgColor, alignment, useBackground, useShadow, this.lines, matrixStack);
+            RenderUtils.renderText(x, y, Configs.Generic.FONT_SCALE.getDoubleValue(), textColor, bgColor, alignment, useBackground, useShadow, this.lines, context);
         }
     }
 
     @Override
-    public void onRenderTooltipLast(ItemStack stack, int x, int y)
+    public void onRenderTooltipLast(DrawContext drawContext, ItemStack stack, int x, int y)
     {
         if (stack.getItem() instanceof FilledMapItem)
         {
@@ -162,7 +164,7 @@ public class RenderHandler implements IRenderer
 
             if (render)
             {
-                fi.dy.masa.malilib.render.RenderUtils.renderShulkerBoxPreview(stack, x, y, Configs.Generic.SHULKER_DISPLAY_BACKGROUND_COLOR.getBooleanValue());
+                fi.dy.masa.malilib.render.RenderUtils.renderShulkerBoxPreview(stack, x, y, Configs.Generic.SHULKER_DISPLAY_BACKGROUND_COLOR.getBooleanValue(), drawContext);
             }
         }
     }
