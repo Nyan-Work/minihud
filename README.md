@@ -4,6 +4,10 @@ Jitpack support
 ===================
 The branch artifacts support fetching from jitpack: https://jitpack.io/#Nyan-Work/minihud
 
+Malilib
+===================
+Get Malilib from Nyan-Work: https://github.com/Nyan-Work/malilib/releases/tag/snapshot-1.20.2
+
 Mini HUD
 ==============
 Mini HUD is a tiny client-side mod for Minecraft. that adds the coordinates, looking angle and current speed to the screen.
